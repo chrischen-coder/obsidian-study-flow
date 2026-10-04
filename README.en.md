@@ -2,7 +2,7 @@
 
 **Screenshots, copied text and PDF selections → your understanding → Markdown flashcards → spaced review.**
 
-[中文](README.md) · [Download starter vault](https://github.com/chrischen-coder/obsidian-study-flow/releases/latest)
+[中文](README.md) · [Download starter vault](https://github.com/chrischen-coder/obsidian-study-flow/releases/latest) · [Screenshot and clipboard quickstart](docs/guide.en.md)
 
 ![Workflow diagram](docs/images/workflow.svg)
 
