@@ -1,0 +1,5 @@
+{
+  "quickadd": { "repository": "chhoumann/quickadd", "version": "2.30.0", "license": "MIT" },
+  "pdf-plus": { "repository": "RyotaUshio/obsidian-pdf-plus", "version": "0.40.31", "license": "MIT" },
+  "obsidian-spaced-repetition": { "repository": "st3v3nmw/obsidian-spaced-repetition", "version": "1.15.4", "license": "MIT" }
+}

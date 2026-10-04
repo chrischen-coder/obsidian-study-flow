@@ -1,0 +1,15 @@
+{
+  "cardFolder": "01_记忆卡片",
+  "attachmentFolder": "99_附件",
+  "shelfPath": "02_PDF学习/PDF书架.md",
+  "decks": [
+    { "label": "通用 / 概念", "tag": "flashcards/通用/概念" },
+    { "label": "考试 / 易错", "tag": "flashcards/考试/易错" },
+    { "label": "读书 / 要点", "tag": "flashcards/读书/要点" }
+  ],
+  "pdfCategories": [
+    { "label": "读书", "value": "读书", "folder": "02_PDF学习/读书", "tag": "学习/读书" },
+    { "label": "考试", "value": "考试", "folder": "02_PDF学习/考试", "tag": "学习/考试" },
+    { "label": "课程", "value": "课程", "folder": "02_PDF学习/课程", "tag": "学习/课程" }
+  ]
+}

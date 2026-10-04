@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+dist/
+.qa/
+*.log
+starter-vault/.obsidian/workspace*.json
+starter-vault/.obsidian/plugins/*/main.js
+starter-vault/.obsidian/plugins/*/manifest.json
+starter-vault/.obsidian/plugins/*/styles.css

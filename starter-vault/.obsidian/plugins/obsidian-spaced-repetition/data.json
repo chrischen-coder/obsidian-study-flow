@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "flashcardTags": [
+      "#flashcards"
+    ],
+    "multilineCardSeparator": "?",
+    "multilineReversedCardSeparator": "??",
+    "singleLineCardSeparator": "::",
+    "singleLineReversedCardSeparator": ":::",
+    "showContextInCards": false,
+    "convertFoldersToDecks": false,
+    "dataStore": "NOTES"
+  }
+}

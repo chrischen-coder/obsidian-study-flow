@@ -1,0 +1,206 @@
+{
+  "choices": [
+    {
+      "id": "351b11cc-0bc4-5a3d-bd43-21d8a2ec1e33",
+      "name": "截图变错题卡",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "image-plus",
+      "macro": {
+        "id": "a332a29d-3157-5289-8b45-9299358d8ba2",
+        "name": "截图变错题卡",
+        "commands": [
+          {
+            "id": "6711ff48-beb6-5320-9a45-fd6bb2db024d",
+            "name": "新建截图错题卡.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/新建截图错题卡.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "e8ab7955-1211-53f2-a5cb-5ab06658bb5c",
+      "name": "文字变错题卡",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "text-cursor-input",
+      "macro": {
+        "id": "5bcaf968-d37e-5552-a374-612415ad8e76",
+        "name": "文字变错题卡",
+        "commands": [
+          {
+            "id": "4106858e-92d2-501a-aae8-e618711cb28b",
+            "name": "新建文字错题卡.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/新建文字错题卡.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "acaacdbe-e19f-56c8-93fa-1a5cb377c4f0",
+      "name": "复制变错题卡",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "text-cursor-input",
+      "macro": {
+        "id": "5bcaf968-d37e-5552-a374-612415ad8e76",
+        "name": "文字变错题卡",
+        "commands": [
+          {
+            "id": "4106858e-92d2-501a-aae8-e618711cb28b",
+            "name": "新建文字错题卡.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/新建文字错题卡.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "817540c4-c19b-5c6c-b667-e17f51a86f38",
+      "name": "修改当前卡片分类",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "folder-cog",
+      "macro": {
+        "id": "571b5828-67d5-5261-bb93-672b27f645aa",
+        "name": "修改当前卡片分类",
+        "commands": [
+          {
+            "id": "0b3386d7-2481-521f-b27c-2b04b7b77831",
+            "name": "修改当前卡片分类.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/修改当前卡片分类.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "ad0aa409-e24c-5e8e-91e9-479ca92b9191",
+      "name": "新建PDF学习卡",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "book-plus",
+      "macro": {
+        "id": "c9c31f5a-0363-58f6-b74f-92e92e892637",
+        "name": "新建PDF学习卡",
+        "commands": [
+          {
+            "id": "44158cf4-0acf-5630-a13e-a66c7ec37f4d",
+            "name": "新建PDF学习卡.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/新建PDF学习卡.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "317dfa76-5546-55da-9570-7393c2c01a1c",
+      "name": "保存PDF阅读进度",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "bookmark-check",
+      "macro": {
+        "id": "f4a8e088-fb0c-571c-8224-65b421516c63",
+        "name": "保存PDF阅读进度",
+        "commands": [
+          {
+            "id": "554bff5b-b7c0-578f-b3c7-9580f32796b2",
+            "name": "保存PDF阅读进度.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/保存PDF阅读进度.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "4b7fc3f6-e99d-554d-b18e-5c760d40c063",
+      "name": "摘录PDF原文",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "text-quote",
+      "macro": {
+        "id": "03bdf042-2615-5635-a45c-99b043ea33ad",
+        "name": "摘录PDF原文",
+        "commands": [
+          {
+            "id": "dbcea5e9-65fc-50a0-98c4-35226900bcc7",
+            "name": "摘录PDF原文.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/摘录PDF原文.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "4b356d97-e326-51d7-9052-372b44561920",
+      "name": "背诵PDF摘录",
+      "type": "Macro",
+      "command": true,
+      "onePageInput": "never",
+      "icon": "book-open-text",
+      "macro": {
+        "id": "5964adde-1865-5c43-982c-1d8ac1cbb359",
+        "name": "背诵PDF摘录",
+        "commands": [
+          {
+            "id": "8f7a14a0-6930-54a9-bbe1-4e0c58e5c507",
+            "name": "打开PDF摘录.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/打开PDF摘录.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "62eaad6d-32b4-544c-a016-b35e85d31826",
+      "name": "PDF学习按钮",
+      "type": "Macro",
+      "command": false,
+      "onePageInput": "never",
+      "icon": "panel-left",
+      "macro": {
+        "id": "7797f369-f0bc-58cc-bfee-5ab21595a704",
+        "name": "PDF学习按钮",
+        "commands": [
+          {
+            "id": "e074f287-936d-5d64-8a9f-750a7f8d59ac",
+            "name": "PDF学习按钮.js",
+            "type": "UserScript",
+            "path": "StudyFlow/scripts/PDF学习按钮.js",
+            "settings": {}
+          }
+        ]
+      },
+      "runOnStartup": true
+    }
+  ],
+  "version": "2.30.0",
+  "disableOnlineFeatures": true,
+  "enableUriCallbacks": true,
+  "enableRibbonIcon": true
+}

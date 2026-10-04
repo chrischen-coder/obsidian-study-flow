@@ -1,0 +1,14 @@
+Obsidian Study Flow publishes its own QuickAdd scripts, configuration, documentation,
+original demo PDF and diagrams under MIT. It grew from a personal learning workflow.
+
+It depends on independently maintained third-party projects:
+- QuickAdd by Christian Houmann: https://github.com/chhoumann/quickadd
+- PDF++ by Ryota Ushio: https://github.com/RyotaUshio/obsidian-pdf-plus
+- Spaced Repetition by Stephen Mwangi and contributors:
+  https://github.com/st3v3nmw/obsidian-spaced-repetition
+- Optional Obsidian Web Clipper: https://github.com/obsidianmd/obsidian-clipper
+
+No third-party plugin binaries are redistributed in the repository or starter ZIP.
+Install them from Obsidian's community plugin browser. Their licenses remain their own.
+Obsidian is a separate application: https://obsidian.md. This is a community project,
+not an official Obsidian product. Screenshots use only the original demo vault.

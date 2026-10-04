@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "网页记忆（选区）",
+  "behavior": "create",
+  "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}}-{{time|date:\"HHmmss\"}}-{{title|safe_name|slice:0,24}}",
+  "path": "01_记忆卡片",
+  "noteContentFormat": "# 网页记忆（选区） · {{title}}\n\n{% if selection %}#flashcards/通用/概念\n\n【保存前改成一个可回忆的问题】\n?\n【保存前改成自己的答案】\n\n## 摘录与核对\n\n{{selection}}{% elseif highlights %}#flashcards/通用/概念\n\n【保存前改成一个可回忆的问题】\n?\n【保存前改成自己的答案】\n\n## 摘录与核对\n\n{{highlights|map:item => item.text|join:\"\\n\\n\"}}{% else %}> [!warning] 请先选中内容\n> 返回网页选择必要内容，再剪藏。未选区的笔记不会带复习标签。{% endif %}\n\n[返回来源]({{url}})",
+  "properties": [
+    {
+      "name": "类型",
+      "value": "网页记忆卡片",
+      "type": "text"
+    },
+    {
+      "name": "来源",
+      "value": "{{url}}",
+      "type": "text"
+    }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,12 @@
+{
+  "autoCopy": false,
+  "autoFocus": false,
+  "autoPaste": false,
+  "colors": {
+    "重点": "#9fbe96",
+    "记忆": "#e2c96f",
+    "易错": "#df8f88",
+    "疑问": "#8fafc5"
+  },
+  "highlightBacklinks": true
+}
