@@ -49,6 +49,7 @@ export class Workbench extends ItemView {
   private timer?: number;
   private closed = false;
   private configuring = false;
+  private configuration?: Configuration;
   constructor(
     leaf: WorkspaceLeaf,
     private plugin: StudyFlowPlugin,
@@ -80,6 +81,11 @@ export class Workbench extends ItemView {
   async onOpen(): Promise<void> {
     this.closed = false;
     this.contentEl.addClass("study-flow");
+    this.registerDomEvent(
+      this.containerEl.ownerDocument.defaultView ?? window,
+      "focus",
+      () => this.configuration?.refreshDependencies(),
+    );
     this.unsubscribe = this.plugin.service.index.subscribe(() => {
       if (this.timer) window.clearTimeout(this.timer);
       this.timer = window.setTimeout(() => this.render(), 100);
@@ -88,6 +94,7 @@ export class Workbench extends ItemView {
   }
   async onClose(): Promise<void> {
     this.closed = true;
+    this.configuration = undefined;
     this.unsubscribe?.();
     if (this.timer) window.clearTimeout(this.timer);
     this.contentEl.empty();
@@ -113,13 +120,15 @@ export class Workbench extends ItemView {
       this.configuring = true;
       const done = () => {
         this.configuring = false;
+        this.configuration = undefined;
         this.render();
       };
       if (p.settings.onboardingDone) {
         root.empty();
         action(root, t("返回工作台", "Back to workbench"), done, p);
       }
-      new Configuration(root, p, done).render();
+      this.configuration = new Configuration(root, p, done);
+      this.configuration.render();
     };
     action(header, t("设置", "Settings"), configure, p).addClass("sf-quiet");
     if (!p.ready) {
@@ -670,6 +679,7 @@ export class Workbench extends ItemView {
 }
 export class Configuration {
   private draft: Settings;
+  private dependenciesEl?: HTMLElement;
   constructor(
     private parent: HTMLElement,
     private plugin: StudyFlowPlugin,
@@ -677,12 +687,12 @@ export class Configuration {
   ) {
     this.draft = structuredClone(plugin.settings);
   }
-  render(): void {
+  refreshDependencies(): void {
     const p = this.plugin,
       t = p.t.bind(p),
-      root = this.parent.createDiv({ cls: "sf-configuration" });
-    root.createEl("h3", { text: t("配置学习工作台", "Set up your workbench") });
-    const deps = root.createDiv({ cls: "sf-dependencies" });
+      deps = this.dependenciesEl;
+    if (!deps?.isConnected) return;
+    deps.empty();
     for (const [id, name] of [
       ["pdf-plus", "PDF++"],
       ["obsidian-spaced-repetition", "Spaced Repetition"],
@@ -707,6 +717,20 @@ export class Configuration {
           p,
         );
     }
+  }
+  render(): void {
+    const p = this.plugin,
+      t = p.t.bind(p),
+      root = this.parent.createDiv({ cls: "sf-configuration" });
+    root.createEl("h3", { text: t("配置学习工作台", "Set up your workbench") });
+    this.dependenciesEl = root.createDiv({ cls: "sf-dependencies" });
+    this.refreshDependencies();
+    action(
+      root,
+      t("检查依赖状态", "Check dependencies"),
+      () => this.refreshDependencies(),
+      p,
+    );
     root.createEl("p", {
       cls: "sf-muted",
       text: t(

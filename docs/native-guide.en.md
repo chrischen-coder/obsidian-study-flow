@@ -14,7 +14,7 @@ v0.2 is a desktop plugin preview, delivered through a feature PR. It has no form
 
 For an existing vault, copy the extracted `study-flow` folder into `.obsidian/plugins/`, restart Obsidian and enable **Study Flow** in Community Plugins. For the example, open the extracted `Study-Flow-Example` folder as a new vault, then enable Study Flow.
 
-Install and enable **PDF++** and **Spaced Repetition** from the community browser. The workbench offers their install links and reports enabled versions. Study Flow does not change their settings.
+Install and enable **PDF++** and **Spaced Repetition** from the community browser. The workbench offers their install links and reports enabled versions. Returning to the workbench refreshes status; **Check dependencies** is also available without losing unsaved configuration. Study Flow does not change their settings.
 
 ## 1. Save the defaults
 
