@@ -13,11 +13,15 @@
   "engines": {
     "node": ">=20"
   },
-  "overrides": { "moment": "2.31.0" },
+  "overrides": {
+    "moment": "2.31.0"
+  },
   "devDependencies": {
     "@types/node": "20.19.43",
+    "clozecraft": "0.4.0",
     "esbuild": "0.28.2",
     "obsidian": "1.13.1",
+    "prettier": "3.6.2",
     "tsx": "4.23.15",
     "typescript": "7.0.2",
     "yaml": "2.9.1"
