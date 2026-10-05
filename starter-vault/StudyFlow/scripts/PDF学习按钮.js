@@ -1,4 +1,10 @@
 module.exports = async ({ app, quickAddApi, obsidian }) => {
+  const native = app.plugins?.plugins?.["study-flow"]?.api?.v1;
+  if (typeof native?.openWorkbench === "function") {
+    const quickAdd = app.plugins?.plugins?.quickadd;
+    if (quickAdd?.pdfStudyButtonsComponent) quickAdd.removeChild(quickAdd.pdfStudyButtonsComponent);
+    return native.openWorkbench();
+  }
   const plugin = app.plugins.plugins.quickadd;
   if (!plugin) return;
   if (plugin.pdfStudyButtonsComponent) plugin.removeChild(plugin.pdfStudyButtonsComponent);

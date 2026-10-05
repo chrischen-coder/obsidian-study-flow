@@ -1,0 +1,319 @@
+.study-flow {
+  padding: 18px;
+  color: var(--text-normal);
+  font-size: var(--font-ui-medium);
+  line-height: 1.6;
+  container-type: inline-size;
+}
+.study-flow * {
+  box-sizing: border-box;
+}
+.study-flow button {
+  cursor: pointer;
+  min-height: 34px;
+  height: auto;
+  white-space: normal;
+}
+.study-flow h2,
+.study-flow h3,
+.study-flow h4 {
+  margin: 0 0 12px;
+  line-height: 1.35;
+}
+.study-flow small,
+.sf-muted {
+  color: var(--text-muted);
+}
+.study-flow small {
+  display: block;
+  font-size: var(--font-ui-smaller);
+}
+.sf-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.sf-header strong {
+  font-size: 18px;
+  letter-spacing: -0.3px;
+}
+.sf-header .sf-quiet {
+  margin-left: auto;
+}
+.sf-mark {
+  display: grid;
+  place-items: center;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+.sf-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border-radius: 10px;
+  background: var(--background-secondary);
+  margin-bottom: 18px;
+}
+.sf-nav button {
+  padding: 7px 4px;
+  box-shadow: none;
+  background: transparent;
+  font-size: var(--font-ui-smaller);
+}
+.sf-nav button[aria-pressed="true"] {
+  background: var(--background-primary);
+  color: var(--interactive-accent);
+  font-weight: 650;
+  box-shadow: var(--input-shadow);
+}
+.sf-capture {
+  display: grid;
+  gap: 7px;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--interactive-accent);
+  border-radius: 9px;
+}
+.sf-capture strong {
+  overflow-wrap: anywhere;
+}
+.sf-capture button {
+  justify-self: start;
+  margin-top: 4px;
+}
+.sf-book,
+.sf-excerpt,
+.sf-card,
+.sf-empty,
+.sf-review {
+  border: 1px solid var(--background-modifier-border);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: var(--background-primary);
+}
+.sf-book {
+  display: flex;
+  gap: 14px;
+}
+.sf-book-cover {
+  width: 62px;
+  min-height: 85px;
+  flex-shrink: 0;
+  background: var(--background-secondary);
+  border-radius: 6px 10px 10px 6px;
+  border-left: 4px solid var(--interactive-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.sf-book-body {
+  min-width: 0;
+  flex: 1;
+}
+.sf-book-body h4 {
+  overflow-wrap: anywhere;
+}
+.study-flow progress {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--interactive-accent);
+  margin: 10px 0;
+}
+.sf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.sf-actions button {
+  font-size: var(--font-ui-smaller);
+}
+.sf-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.sf-filters input {
+  grid-column: 1 / -1;
+}
+.study-flow input,
+.study-flow select,
+.study-flow textarea {
+  max-width: 100%;
+  min-width: 0;
+}
+.sf-filters select,
+.sf-add select {
+  width: 100%;
+}
+.sf-excerpt blockquote,
+.sf-original {
+  border-left: 3px solid var(--interactive-accent);
+  margin: 12px 0;
+  padding: 6px 0 6px 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 230px;
+  overflow: auto;
+}
+.sf-understanding {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 10px;
+  background: var(--background-secondary);
+  border-radius: 7px;
+}
+.sf-card p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.sf-add {
+  margin: 20px 0;
+}
+.sf-add button {
+  margin-top: 10px;
+}
+.sf-review {
+  text-align: center;
+  padding: 28px 16px;
+}
+.sf-review-icon {
+  color: var(--interactive-accent);
+  margin-bottom: 16px;
+}
+.sf-review-icon svg {
+  width: 36px;
+  height: 36px;
+}
+.sf-review button {
+  margin: 18px 4px 0;
+}
+.sf-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid var(--background-modifier-border);
+  margin-top: 24px;
+  padding-top: 14px;
+}
+.sf-footer button {
+  box-shadow: none;
+  font-size: var(--font-ui-smaller);
+}
+.sf-configuration .setting-item {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sf-configuration .setting-item-control {
+  min-width: 120px;
+}
+.sf-configuration details {
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 12px;
+  margin: 12px 0;
+}
+.sf-configuration summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.sf-dependencies {
+  display: grid;
+  gap: 8px;
+}
+.sf-dependency {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+}
+.sf-ok {
+  border-left: 3px solid var(--color-green);
+}
+.sf-dependency button {
+  margin-top: 8px;
+}
+.sf-config-row {
+  border: 1px solid var(--background-modifier-border);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.sf-modal {
+  width: 720px;
+  max-width: 94vw;
+}
+.sf-editor {
+  padding: 0;
+}
+.sf-field {
+  margin: 16px 0;
+}
+.sf-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.sf-field textarea {
+  width: 100%;
+  padding: 10px;
+  resize: vertical;
+}
+.sf-editor > label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.sf-editor > label select {
+  flex: 1;
+}
+.sf-image-preview {
+  display: block;
+  max-width: 100%;
+  max-height: 230px;
+  margin: 12px auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.sf-preview:not(:empty) {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 9px;
+  padding: 14px;
+}
+.sf-preview details {
+  border-top: 1px solid var(--background-modifier-border);
+  margin-top: 14px;
+  padding-top: 12px;
+}
+.sf-preview summary {
+  cursor: pointer;
+  color: var(--interactive-accent);
+}
+.sf-warning,
+.sf-conflict:not(:empty) {
+  padding: 12px;
+  background: var(--background-secondary);
+  border-left: 3px solid var(--color-orange);
+  margin: 14px 0;
+}
+@container (max-width: 300px) {
+  .sf-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+  .sf-book-cover {
+    display: none;
+  }
+  .sf-filters {
+    grid-template-columns: 1fr;
+  }
+}

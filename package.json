@@ -1,9 +1,29 @@
 {
   "name": "obsidian-study-flow",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Screenshot, clipboard and PDF selection to Markdown flashcards, powered by QuickAdd, PDF++ and Spaced Repetition.",
+  "description": "A local-first PDF learning workbench for Obsidian: capture, understand, create flashcards and review.",
   "license": "MIT",
-  "scripts": { "test": "node --test tests/*.test.cjs", "package": "node tools/package.cjs" },
-  "engines": { "node": ">=18" }
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "node tools/build.mjs",
+    "test": "node tools/test.cjs",
+    "package": "npm run build && node tools/package.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "moment": "2.31.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "clozecraft": "0.4.0",
+    "esbuild": "0.28.2",
+    "obsidian": "1.13.1",
+    "prettier": "3.6.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "yaml": "2.9.1"
+  }
 }

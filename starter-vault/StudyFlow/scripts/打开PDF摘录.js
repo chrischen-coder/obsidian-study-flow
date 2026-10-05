@@ -17,6 +17,8 @@ function resolvePdf(app) {
 }
 
 module.exports = async ({ app, quickAddApi, obsidian }) => {
+  const native = app.plugins?.plugins?.["study-flow"]?.api?.v1;
+  if (typeof native?.openExcerpts === "function") return native.openExcerpts();
   const helper = require(app.vault.adapter.getFullPath("StudyFlow/scripts/PDF学习工具.js"));
   const pdf = resolvePdf(app);
   if (!pdf) {

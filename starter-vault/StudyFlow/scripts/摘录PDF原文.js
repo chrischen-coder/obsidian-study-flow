@@ -73,6 +73,8 @@ function askForSummary(app, obsidian, pdfFile, selection) {
 }
 
 module.exports = async ({ app, quickAddApi, obsidian }) => {
+  const native = app.plugins?.plugins?.["study-flow"]?.api?.v1;
+  if (typeof native?.capturePdf === "function") return native.capturePdf();
   const helperPath = app.vault.adapter.getFullPath("StudyFlow/scripts/PDF学习工具.js");
   const {
     chooseCategory,

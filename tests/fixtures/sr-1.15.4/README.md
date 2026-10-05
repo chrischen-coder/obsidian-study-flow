@@ -1,0 +1,1 @@
+Pinned upstream parser from https://github.com/st3v3nmw/obsidian-spaced-repetition/blob/1.15.4/src/parser.ts. MIT, see LICENSE. The parser logic is unchanged; the Obsidian application imports use a small test shim and TypeScript checking is disabled for the upstream fixture. Used only in development tests; never bundled in the plugin or example vault.

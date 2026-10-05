@@ -1,4 +1,6 @@
 module.exports = async ({ app, quickAddApi, obsidian, variables }) => {
+  const native = app.plugins?.plugins?.["study-flow"]?.api?.v1;
+  if (typeof native?.captureScreenshot === "function") return native.captureScreenshot(variables);
   const helper = require(app.vault.adapter.getFullPath("StudyFlow/scripts/错题卡工具.js"));
   const config = require(app.vault.adapter.getFullPath("StudyFlow/scripts/配置工具.js")).loadConfig(app);
   const image = require("electron").clipboard.readImage();
