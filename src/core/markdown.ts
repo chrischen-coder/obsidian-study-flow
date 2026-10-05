@@ -101,7 +101,12 @@ export function parseRecord(
   const { data: f, body } = frontmatter(text, yaml);
   const kind = f.study_flow_kind,
     id = str(f.study_flow_id);
-  if (!id || f.study_flow_schema !== 1) return null;
+  if (!kind && !f.study_flow_id && !f.study_flow_schema) return null;
+  if (!id || f.study_flow_schema !== 1)
+    throw new FlowError(
+      "unsupported",
+      "Unsupported or incomplete Study Flow schema. Keep the original file and repair its properties or use a compatible plugin version.",
+    );
   const base = { id, path, revision: "" };
   let record: Record;
   if (kind === "book") {
@@ -151,6 +156,11 @@ export function parseRecord(
       legacySource: str(f.study_flow_legacy_source) || undefined,
     };
   } else if (kind === "card") {
+    if (body.indexOf(START) < 0 || body.indexOf(END) <= body.indexOf(START))
+      throw new FlowError(
+        "unsupported",
+        "Card content boundaries are missing. Open the original file to repair them.",
+      );
     const status = f.study_flow_state === "active" ? "active" : "draft";
     const legacyFields =
       status === "active"
@@ -205,7 +215,7 @@ export function parseRecord(
       createdAt: str(f.study_flow_created_at),
       updatedAt: str(f.study_flow_updated_at),
     };
-  } else return null;
+  } else throw new FlowError("unsupported", "Unknown Study Flow record kind.");
   record.revision = recordRevision(record);
   return record;
 }

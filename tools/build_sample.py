@@ -21,9 +21,13 @@ for number, title, lines in [
         '重读容易产生熟悉感，熟悉并不代表能够独立回答。',
         '写一张好卡片：提出一个问题，用自己的话给出答案。',
         '',
-        '练习：选中前两行，保存划线，写下自己的小结。',
-        '勾选“同时生成记忆卡片”，再写一个可回忆的问题。',
+        '练习：选中前两行，运行 Study Flow：保存 PDF 选区。',
+        '在摘录收件箱写理解、建卡，确认后发布到复习。',
+        '旧 QuickAdd 入口：保存划线，写小结并勾选建卡。',
         '例如：为什么看到一句话很熟悉，不等于真正记住了？',
+        '',
+        'Active recall means retrieving an answer without looking at the source.',
+        'Select the first two lines, capture, then write your understanding in the inbox.',
     ]),
     (2, '间隔复习：下一次由卡片提醒你', [
         '复习时先回答，再显示答案，最后按实际回忆情况评分。',
@@ -32,17 +36,26 @@ for number, title, lines in [
         '',
         '这是本项目原创的练习材料，允许随 MIT 项目复制。',
         '没有外部题库、个人笔记或收费教材内容。',
+        '',
+        'Recall first. Reveal the answer. Rate how well you remembered.',
+        'Progress is saved automatically for PDFs you have started learning.',
     ]),
 ]:
     c.setFillColor(HexColor('#f6f3ec')); c.rect(0, 0, 595, 842, fill=1, stroke=0)
     c.setFillColor(HexColor('#147d75')); c.setFont('Helvetica-Bold', 13)
-    c.drawString(48, 774, 'OBSIDIAN STUDY FLOW / DEMO')
+    c.drawString(48, 774, 'STUDY FLOW BY CROWN / ORIGINAL DEMO')
     c.setFillColor(HexColor('#1c3040')); c.setFont('DemoCJK', 23)
     c.drawString(48, 714, title)
-    c.setFont('DemoCJK', 15)
     y=648
     for line in lines:
-        c.drawString(48, y, line); y-=38
+        font_size=11 if line.isascii() else 15
+        c.setFont('DemoCJK',font_size)
+        current=''
+        for char in line:
+            if pdfmetrics.stringWidth(current+char,'DemoCJK',font_size)>499:
+                c.drawString(48,y,current); y-=font_size*1.6; current=''
+            current+=char
+        c.drawString(48,y,current); y-=32 if font_size==15 else 25
     c.setFillColor(HexColor('#63737c')); c.setFont('Helvetica', 11)
     c.drawString(48, 42, f'Original demo material | MIT | Page {number} / 2')
     c.showPage()

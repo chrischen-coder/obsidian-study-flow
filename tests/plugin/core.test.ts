@@ -188,6 +188,17 @@ test("renaming learning files repairs backlinks by identity and keeps card path/
   assert.equal(updated.excerptPath, target);
   assert.equal(updated.path, card.path);
   assert.equal(updated.schedule, card.schedule);
+  const movedCard = "01_记忆卡片/moved-card.md";
+  vault.files.set(movedCard, await vault.read(updated.path));
+  vault.files.delete(updated.path);
+  await service.renameLearningFile(updated.path, movedCard);
+  const saved = await service.saveCard(
+    { ...updated, answer: "修改后的答案" },
+    updated.revision,
+  );
+  assert.equal(saved.path, movedCard);
+  assert.equal(vault.exists(updated.path), false);
+  assert.equal(((await service.read(card.id)) as Card).schedule, card.schedule);
 });
 test("screenshot cancellation writes nothing; failed save removes only its image; retry and later failure keep references", async () => {
   const { vault } = environment();
@@ -466,6 +477,18 @@ test("relinking a missing PDF repairs excerpt/card links while preserving origin
   assert.match(after.source, /^03_PDF\/replacement.pdf#/);
   assert.equal(after.schedule, card.schedule);
   assert.equal(after.path, card.path);
+  vault.files.set("03_PDF/another.pdf", "another original PDF");
+  const other = await service.ensureBook({
+    ...selection,
+    pdfPath: "03_PDF/another.pdf",
+  });
+  await assert.rejects(() =>
+    service.relinkBook(other.id, "03_PDF/replacement.pdf"),
+  );
+  assert.equal(
+    service.index.books().find((b) => b.id === other.id)?.pdfPath,
+    "03_PDF/another.pdf",
+  );
 });
 test("partial upgrade can restore untouched files; missing backup stops all restoration before writes", async () => {
   const { service, vault } = environment();
@@ -519,4 +542,30 @@ test("card editing preserves unrelated scheduling comments outside its managed a
   assert.equal(edit.schedule, "");
   await service.saveCard({ ...edit, answer: "新答案" }, edit.revision);
   assert.equal((await vault.read(card.path)).match(/<!--SR:/g)?.length, 1);
+});
+test("unsupported schemas and duplicate IDs report original paths; malformed edits remove stale indexed content", async () => {
+  const { service, vault } = environment();
+  const saved = await service.capture(selection),
+    original = await vault.read(saved.path);
+  const copy = "02_PDF学习/摘录/copied.md";
+  await vault.create(copy, original);
+  await service.index.refresh(copy);
+  assert.equal(service.index.issues.size, 2);
+  assert.throws(() => service.index.get(saved.id), FlowError);
+  vault.files.delete(copy);
+  service.index.remove(copy);
+  await vault.process(saved.path, (text) =>
+    text.replace("study_flow_schema: 1", "study_flow_schema: 99"),
+  );
+  await service.index.refresh(saved.path);
+  assert.equal(service.index.records.has(saved.path), false);
+  assert.equal(service.index.issues.has(saved.path), true);
+  assert.equal(
+    await vault.read(saved.path),
+    original.replace("study_flow_schema: 1", "study_flow_schema: 99"),
+  );
+  vault.files.set(saved.path, original);
+  await service.index.refresh(saved.path);
+  assert.equal(service.index.issues.size, 0);
+  assert.equal(service.index.excerpts().length, 1);
 });

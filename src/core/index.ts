@@ -74,6 +74,8 @@ export class LearningIndex {
       else this.records.delete(path);
       this.errors.delete(path);
     } catch (e) {
+      if (this.pending.get(path) !== generation || this.disposed) return;
+      this.records.delete(path);
       this.errors.set(path, e instanceof Error ? e.message : String(e));
     }
     if (notify) this.emit();
@@ -92,6 +94,20 @@ export class LearningIndex {
         "Duplicate learning IDs found. Keep one original or assign a new ID to the copied file before editing.",
       );
     return records[0];
+  }
+  get issues(): Map<string, string> {
+    const issues = new Map(this.errors),
+      ids = new Map<string, string[]>();
+    for (const record of this.records.values())
+      ids.set(record.id, [...(ids.get(record.id) ?? []), record.path]);
+    for (const paths of ids.values())
+      if (paths.length > 1)
+        for (const path of paths)
+          issues.set(
+            path,
+            "Duplicate learning ID. Keep the original or assign a new ID to the copied file before editing.",
+          );
+    return issues;
   }
   books(): Book[] {
     return [...this.records.values()]

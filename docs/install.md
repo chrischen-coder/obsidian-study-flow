@@ -1,4 +1,6 @@
-# 安装与恢复
+# 旧 QuickAdd 工作流：安装与恢复
+
+**v0.2 原生插件请看 [中文安装教程](native-guide.md) / [English](native-guide.en.md)。** 原生安装不需要 Node 或 QuickAdd，也不会修改第三方设置。以下是保留的旧工作流与旧命令行安装工具。
 
 ## 方式一：独立示例库（推荐）
 

@@ -483,7 +483,9 @@ export default class StudyFlowPlugin extends Plugin {
       record.kind === "excerpt"
         ? record.subpath
         : record.kind === "card"
-          ? record.source.slice(record.source.indexOf("#"))
+          ? record.source.includes("#")
+            ? record.source.slice(record.source.indexOf("#"))
+            : `#page=${page}`
           : `#page=${page}`;
     if (dependency(this.app, "pdf-plus") && subpath.includes("selection=")) {
       try {

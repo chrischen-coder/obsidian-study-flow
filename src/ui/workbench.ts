@@ -182,19 +182,27 @@ export class Workbench extends ItemView {
       true,
     );
     const list = root.createDiv({ cls: "sf-list" });
-    if (this.tab === "reading") this.reading(list);
-    else if (this.tab === "inbox") this.inbox(list);
-    else if (this.tab === "cards") this.cards(list);
-    else this.review(list);
-    if (p.service.index.errors.size) {
+    try {
+      if (this.tab === "reading") this.reading(list);
+      else if (this.tab === "inbox") this.inbox(list);
+      else if (this.tab === "cards") this.cards(list);
+      else this.review(list);
+    } catch (e) {
+      list.createEl("p", {
+        cls: "sf-warning",
+        text: e instanceof Error ? e.message : String(e),
+      });
+    }
+    const issues = p.service.index.issues;
+    if (issues.size) {
       const box = root.createDiv({ cls: "sf-warning" });
       box.createEl("p", {
         text: t(
-          `${p.service.index.errors.size} 个文件需要检查，原文件仍保留。`,
-          `${p.service.index.errors.size} files need attention; their originals are preserved.`,
+          `${issues.size} 个文件需要检查，原文件仍保留。`,
+          `${issues.size} files need attention; their originals are preserved.`,
         ),
       });
-      for (const [path, message] of [...p.service.index.errors].slice(0, 5)) {
+      for (const [path, message] of [...issues].slice(0, 5)) {
         action(box, path, () => p.openPath(path), p);
         box.createEl("small", { text: message });
       }

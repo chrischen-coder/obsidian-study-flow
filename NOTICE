@@ -1,4 +1,4 @@
-Obsidian Study Flow publishes its own QuickAdd scripts, configuration, documentation,
+Obsidian Study Flow publishes its native plugin, QuickAdd scripts, configuration, documentation,
 original demo PDF and diagrams under MIT. It grew from a personal learning workflow.
 
 It depends on independently maintained third-party projects:
@@ -12,3 +12,10 @@ No third-party plugin binaries are redistributed in the repository or starter ZI
 Install them from Obsidian's community plugin browser. Their licenses remain their own.
 Obsidian is a separate application: https://obsidian.md. This is a community project,
 not an official Obsidian product. Screenshots use only the original demo vault.
+
+Development-only compatibility fixture:
+tests/fixtures/sr-1.15.4/parser.ts is from Obsidian Spaced Repetition 1.15.4
+by Stephen Mwangi and contributors, under MIT. Its license and provenance are
+included beside the fixture. Only imports are adapted to the test environment.
+The fixture, clozecraft and other development dependencies are excluded from
+native plugin and example ZIPs.

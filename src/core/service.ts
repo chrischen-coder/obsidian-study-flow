@@ -311,17 +311,19 @@ export class LearningService {
       /[\r\n]/.test(card.separator)
     )
       throw new FlowError("invalid", "Invalid deck or card separator.");
-    return this.locked(card.id, () =>
-      this.save(
+    return this.locked(card.id, () => {
+      const indexed = this.index.get(card.id);
+      return this.save(
         {
           ...card,
+          path: indexed?.path ?? card.path,
           question: card.question.trim(),
           answer: card.answer.trim(),
           updatedAt: new Date().toISOString(),
         },
         expected,
-      ),
-    );
+      );
+    });
   }
   async saveProgress(
     snapshot: ProgressSnapshot,
@@ -431,18 +433,26 @@ export class LearningService {
     validPath(pdfPath);
     if (!pdfPath.toLowerCase().endsWith(".pdf") || !this.vault.exists(pdfPath))
       throw new FlowError("missing", "Choose a PDF in your vault.");
-    const result = await this.patch(id, (r) =>
-      r.kind === "book" ? { ...r, pdfPath } : r,
-    );
-    try {
-      await this.repairBookLinks((await this.read(id)) as Book);
-      await this.refreshShelf();
-    } catch {
-      result.warnings.push(
-        "Book saved; refresh the library to repair remaining links.",
-      );
-    }
-    return result;
+    return this.locked(`book:${pdfPath}`, async () => {
+      if (this.index.books().some((b) => b.pdfPath === pdfPath && b.id !== id))
+        throw new FlowError(
+          "conflict",
+          "This PDF already has a study note. Choose another PDF to keep one overview per document.",
+        );
+      const result = await this.patch(id, (r) => {
+        if (r.kind !== "book") throw new FlowError("invalid", "Not a book.");
+        return { ...r, pdfPath };
+      });
+      try {
+        await this.repairBookLinks((await this.read(id)) as Book);
+        await this.refreshShelf();
+      } catch {
+        result.warnings.push(
+          "Book saved; refresh the library to repair remaining links.",
+        );
+      }
+      return result;
+    });
   }
   async renameLearningFile(oldPath: string, newPath: string): Promise<void> {
     this.index.remove(oldPath);
