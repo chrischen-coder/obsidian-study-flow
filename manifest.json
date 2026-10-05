@@ -1,0 +1,10 @@
+{
+  "id": "study-flow",
+  "name": "Study Flow",
+  "version": "0.2.0",
+  "minAppVersion": "1.13.7",
+  "description": "Capture PDF excerpts, write your understanding, publish Markdown flashcards and review with Spaced Repetition.",
+  "author": "crown",
+  "authorUrl": "https://github.com/crown-sports",
+  "isDesktopOnly": true
+}
