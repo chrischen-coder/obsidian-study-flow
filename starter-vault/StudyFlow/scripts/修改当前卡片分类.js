@@ -1,4 +1,6 @@
 module.exports = async ({ app, quickAddApi, obsidian, variables }) => {
+  const native = app.plugins?.plugins?.["study-flow"]?.api?.v1;
+  if (typeof native?.changeDeck === "function") return native.changeDeck(variables);
   const helperPath = app.vault.adapter.getFullPath("StudyFlow/scripts/错题卡工具.js");
   const { chooseDeck, displayDeck, refreshReviewData } = require(helperPath);
   const file = app.workspace.getActiveFile();
